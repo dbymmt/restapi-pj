@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RestController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +16,15 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+
+Route::apiResource('/v1/rest', RestController::class);
+
+Route::get('/hello', function () {
+    return response()->json([
+      'message' => 'Hello'
+    ], 200);
+});
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
